@@ -12,6 +12,7 @@ RUN echo "deb http://archive.debian.org/debian/ stretch main contrib non-free" >
     && apt-get install -y wget \
     && apt-get install -y ping \
     && apt-get install -y git \
+    && apt-get install -y mysql-client \
     && rm -rf /var/lib/apt/lists/* 
 
 EXPOSE 8080
