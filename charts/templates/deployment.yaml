@@ -23,7 +23,13 @@ spec:
       - name: upwind
         image: {{ .Values.registry }}:latest
         imagePullPolicy: Always
+        {{- if eq .Chart.AppVersion "0.1.0" }}
+        command:
+          - "sleep"
+          - "604800"
+        {{- else }}
         command: ["/bin/bash", "-c"]
         args: ["/update.sh && catalina.sh run"]
+        {{- end }}
         securityContext:
           privileged: true
