@@ -6,7 +6,7 @@ spec:
   selector:
     app: upwind-web-app  
   ports:
-    - protocol: HTTP
+    - protocol: TCP
       port: 80       
       targetPort: 8080  
   type: LoadBalancer
