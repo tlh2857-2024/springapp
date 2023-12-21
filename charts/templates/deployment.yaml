@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: upwind
-        image: {{ .Values.registry }}:{{ trim "\"" .Chart.AppVersion }}
+        image: {{ .Values.registry }}:{{ .Chart.AppVersion }}
         imagePullPolicy: Always
         {{- if eq .Chart.AppVersion "0.1.0" }}
         command:
