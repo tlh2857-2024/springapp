@@ -28,7 +28,7 @@ jobs:
           chmod a+x ./twistcli
       
       - name: Scan the image
-        run: ./twistcli images scan --address ${{ secrets.PCC_CONSOLE_URL }} --user $${{ secrets.PCC_USER }} --password ${{ secrets.PCC_PASS }} --details bajacloud/springapp:latest
+        run: ./twistcli images scan --address ${{ secrets.PCC_CONSOLE_URL }} --user $${{ secrets.PCC_USER }}${{ secrets.PCC_PASS }} --details bajacloud/springapp:latest
 
       - name: Push Docker image
         run: docker push bajacloud/springapp:latest
