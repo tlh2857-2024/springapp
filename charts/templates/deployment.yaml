@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: upwind-web-app
+  name: springapp
   labels: 
     {{- if .Chart.AppVersion }}
     app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
@@ -10,17 +10,17 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: upwind-web-app
+      app: springapp
   template:
     metadata:
       labels:
-        app: upwind-web-app
+        app: springapp
         {{- if .Chart.AppVersion }}
         app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
         {{- end }}
     spec:
       containers:
-      - name: upwind
+      - name: springapp
         image: {{ .Values.registry }}:{{ .Chart.AppVersion }}
         imagePullPolicy: Always
         {{- if eq .Chart.AppVersion "0.1.0" }}
