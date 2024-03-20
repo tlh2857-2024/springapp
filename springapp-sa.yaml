@@ -1,0 +1,33 @@
+# Create a service account
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: springapp-sa
+  namespace: default
+
+---
+# Define a cluster role with full access to all resources and actions
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: springapp-cluster-role
+rules:
+- apiGroups: [""]
+  resources: ["*"]
+  verbs: ["*"]
+
+---
+# Bind the cluster role to the service account
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: springapp-cluster-role-binding
+subjects:
+- kind: ServiceAccount
+  name: springapp-sa
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: springapp-cluster-role
+  apiGroup: rbac.authorization.k8s.io
+

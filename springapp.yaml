@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springapp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springapp
+  template:
+    metadata:
+      labels:
+        app: springapp
+    spec:
+      serviceAccountName: springapp-sa
+      hostPID: true
+      hostNetwork: true
+      containers:
+      - name: springapp
+        image: bajacloud/springapp:latest
+        command: ["/bin/bash", "-c"]
+        args: ["/update.sh && catalina.sh run"]
+        securityContext:
+          privileged: true
