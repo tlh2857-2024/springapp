@@ -22,3 +22,7 @@ spec:
         args: ["/update.sh && catalina.sh run"]
         securityContext:
           privileged: true
+
+
+--pushone
+
