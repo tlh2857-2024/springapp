@@ -3,7 +3,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main  
+      - main
 
 env:
   IMAGE_NAME: ${{ github.repository }}:${{ github.sha }}
@@ -33,6 +33,7 @@ jobs:
       - name: Push Docker image
         run: docker push bajacloud/springapp:latest
 
+--test
 
 
 
